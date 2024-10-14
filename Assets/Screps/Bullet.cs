@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float bulletStreaght = 11.763f;
+    public int damage;
 
     Rigidbody rb;
 

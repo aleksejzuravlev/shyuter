@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bulllet
   - Bullet
+  - KillController
   layers:
   - Default
   - TransparentFX

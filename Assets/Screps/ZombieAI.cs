@@ -12,8 +12,10 @@ public class ZombieAI : MonoBehaviour
     public int damage = 10;
     private Animator animator;
     public float AttackDistance = 1;
+    private bool isAlive = true;
 
     private NavMeshAgent agent;
+    private ValeraKillController killController;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,9 @@ public class ZombieAI : MonoBehaviour
 
         startPosition = transform.position;
         animator = GetComponent<Animator>();
+
+        killController = GameObject.FindGameObjectWithTag
+            ("KillController").GetComponent<ValeraKillController>();
     }
 
     // Update is called once per frame
@@ -91,7 +96,11 @@ public class ZombieAI : MonoBehaviour
 
     private void Death()
     {
-
+        if(isAlive == true && health < 0)
+        {
+            killController.KillValera();
+            isAlive = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -116,7 +125,8 @@ public class ZombieAI : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            health = health - damage;
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            health = health - bullet.damage;
             Destroy(collision.gameObject);
             if(health < 0)
             {
@@ -131,6 +141,6 @@ public class ZombieAI : MonoBehaviour
     private void GivePlayerDamage()
     {
         Health playerHealth = Player.GetComponent<Health>();
-        playerHealth.TakeDamage(20);
+        playerHealth.TakeDamage(damage);
     }
 }
