@@ -43,7 +43,7 @@ public class ShotgunShoot : MonoBehaviour
                     if(curAnim == "idel")
                     {
                         shootSounds.Play();
-                        animator.SetTrigger("Shoot");
+                        animator.SetTrigger("Shoot1");
                         Instantiate(bullet, spawnPos1.position, spawnPos1.rotation);
                         Instantiate(bullet, spawnPos2.position, spawnPos2.rotation);
                         Instantiate(bullet, spawnPos3.position, spawnPos3.rotation);

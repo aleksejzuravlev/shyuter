@@ -13,13 +13,13 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward *  bulletStreaght, ForceMode.Impulse);
+        rb.AddForce(transform.forward * bulletStreaght, ForceMode.Impulse);
         Destroy(gameObject, 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
