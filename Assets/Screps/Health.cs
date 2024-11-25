@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     private float health = 100;
     public Image healthBar;
+    public GameObject loosePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,8 @@ public class Health : MonoBehaviour
         health = health - damage;
         if (health < 1)
         {
+            loosePanel.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
             Destroy(gameObject);
         }
     }
