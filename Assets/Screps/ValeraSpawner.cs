@@ -8,6 +8,9 @@ public class ValeraSpawner : MonoBehaviour
     public GameObject valera;
     public GameObject valeraConus;
     public GameObject valeraGuga;
+    public GameObject valeraArmor;
+    public GameObject valeraMag1;
+    public GameObject valeramag3;
     public float radius;
     public float second;
     public int count;
@@ -32,6 +35,18 @@ public class ValeraSpawner : MonoBehaviour
         else if (chance < 70)
         {
             Instantiate(valeraGuga, finalPos, Quaternion.identity);
+        }
+        else if (chance < 75)
+        {
+            Instantiate(valeraArmor, finalPos, Quaternion.identity);
+        }
+        else if (chance < 80)
+        {
+            Instantiate(valeraMag1, finalPos, Quaternion.identity);
+        }
+        else if (chance < 85)
+        {
+            Instantiate(valeramag3, finalPos, Quaternion.identity);
         }
     }
 

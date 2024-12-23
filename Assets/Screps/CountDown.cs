@@ -16,8 +16,8 @@ public class CountDown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("Timer");
         currentTime = seconds;
+        StartCoroutine("Timer");
     }
 
     // Update is called once per frame
