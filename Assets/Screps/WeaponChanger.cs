@@ -7,6 +7,7 @@ public class WeaponChanger : MonoBehaviour
 
     public GameObject pistol;
     public GameObject shotGun;
+    public GameObject grenade;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,20 @@ public class WeaponChanger : MonoBehaviour
         {
             shotGun.SetActive(true);
             pistol.SetActive(false);
+            if(grenade != null) grenade.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             shotGun.SetActive(false);
             pistol.SetActive(true);
+            if (grenade != null) grenade.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (grenade == null) return;
+            shotGun.SetActive(false);
+            pistol.SetActive(false);
+            grenade.SetActive(true);
         }
     }
 }
