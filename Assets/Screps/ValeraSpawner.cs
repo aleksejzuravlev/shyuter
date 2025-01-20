@@ -23,6 +23,16 @@ public class ValeraSpawner : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(point, out hit, radius, 1);
         Vector3 finalPos = hit.position;
+
+        //ПРоверка на бесконечность
+        if(finalPos.x == float.PositiveInfinity || 
+        finalPos.y == float.PositiveInfinity || 
+        finalPos.z == float.PositiveInfinity)
+        {
+            print("бесконечность не придел");
+            return;
+        }
+
         int chance = Random.Range(0, 100);
         if (chance < 15)
         {

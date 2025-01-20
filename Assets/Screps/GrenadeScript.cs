@@ -8,7 +8,7 @@ public class GrenadeScript : MonoBehaviour
     public GameObject explosion;
     public float time = 5;
     public float damageRadius = 5;
-    public float damage;
+    public int damage;
 
     private void GiveDamage()
     {
@@ -17,6 +17,11 @@ public class GrenadeScript : MonoBehaviour
         for(int i = 0; i < colliders.Length; i++)
         {
             //Проверить на Валеру
+            ZombieAI zombieAI;
+            if (colliders[i].TryGetComponent(out zombieAI))
+            {
+                zombieAI.TakeDamage(damage);
+            }
 
             //Проверить на игрока
             if (colliders[i].tag == "Player")

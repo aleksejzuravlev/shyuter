@@ -121,20 +121,25 @@ public class ZombieAI : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int dmg)
+    {
+        health = health - dmg;
+        if (health < 0)
+        {
+            state = "Death";
+            animator.SetTrigger("Death");
+            Destroy(gameObject, 10);
+            GetComponent<CapsuleCollider>().enabled = false;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Bullet")
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            health = health - bullet.damage;
+            TakeDamage(bullet.damage);
             Destroy(collision.gameObject);
-            if(health < 0)
-            {
-                state = "Death";
-                animator.SetTrigger("Death");
-                Destroy(gameObject, 10);
-                GetComponent<CapsuleCollider>().enabled = false;
-            }
         }
     }
 
